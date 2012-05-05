@@ -1,7 +1,7 @@
 # README for hashroute.dart
 
 hashroute.dart is a simple location hash router for Dart. Using it is simple:
-you create a new HashRouter object, and which the `addHandler()` resp.
+you create a new HashRouter object, and with the `addHandler()` resp.
 `addHandlerFunc()` methods, you can add handlers for routes. Routes are
 specified in a Sinatra-like style.
 
