@@ -87,7 +87,7 @@ class HashRouter {
 	}
 
 	void addHandler(String pattern, HashRouterHandler handler) {
-		routes.add(new PatternHandlerPair('#' + pattern, handler));
+		routes.add(new PatternHandlerPair('#${pattern}', handler));
 	}
 
 	void addHandlerFunc(String pattern, Function handleFunc) {
@@ -100,7 +100,9 @@ class HashRouter {
 
 	void run() {
 		if (window.location.hash != "") {
-			this.goTo(window.location.hash);
+			String saved_hash = window.location.hash;
+			window.location.hash = "";
+			this.goTo(saved_hash);
 		}
 	}
 }
