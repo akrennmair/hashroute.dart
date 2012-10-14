@@ -99,7 +99,7 @@ class HashRouter {
 	}
 
 	void run() {
-		if (window.location.hash != "") {
+		if (window.location != "") {
 			String saved_hash = window.location.hash;
 			window.location.hash = "";
 			this.goTo(saved_hash);
