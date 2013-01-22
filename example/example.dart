@@ -1,5 +1,5 @@
-#import('dart:html');
-#import('package:hashroute/hashroute.dart', prefix:'hr');
+import 'dart:html';
+import 'package:hashroute/hashroute.dart' as hr;
 
 void main() {
 	hr.HashRouter router = new hr.HashRouter();

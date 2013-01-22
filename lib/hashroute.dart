@@ -1,7 +1,7 @@
-#library('hashroute');
-#import('dart:html');
+library hashroute;
+import 'dart:html';
 
-interface HashRouterHandler {
+abstract class HashRouterHandler {
 	void handle(String path, Map<String,String> values);
 }
 
@@ -11,11 +11,11 @@ class PatternHandlerPair {
 
 	PatternHandlerPair(this.pattern_, this.handler_);
 
-	String get pattern() => pattern_;
-	HashRouterHandler get handler() => handler_;
+	String get pattern => pattern_;
+	HashRouterHandler get handler => handler_;
 }
 
-class _HashRouterFuncHandler implements HashRouterHandler {
+class _HashRouterFuncHandler extends HashRouterHandler {
 	Function f_;
 	_HashRouterFuncHandler(this.f_);
 
