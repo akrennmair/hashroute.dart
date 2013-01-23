@@ -2,7 +2,7 @@ name: hashroute
 description: >
     hashroute.dart is a simple location hash router for Dart.
 dependencies:
-    browser: any
+    browser: ">=0.0.1 <0.0.2"
     unittest: any
 version: 2.0.1
 author: Andreas Krennmair <ak@synflood.at>
