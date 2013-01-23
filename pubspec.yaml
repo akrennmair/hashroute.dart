@@ -3,6 +3,7 @@ description: >
     hashroute.dart is a simple location hash router for Dart.
 dependencies:
     browser: any
+    unittest: any
 version: 2.0.1
 author: Andreas Krennmair <ak@synflood.at>
 homepage: https://github.com/akrennmair/hashroute.dart

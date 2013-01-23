@@ -1,5 +1,6 @@
 library hashroute;
 import 'dart:html';
+import 'match.dart';
 
 abstract class HashRouterHandler {
 	void handle(String path, Map<String,String> values);
@@ -42,48 +43,14 @@ class HashRouter {
 
 		for (var r in routes) {
 			values = new Map<String,String>();
-			//print("route = ${r.pattern} path = ${path}");
-			int i = 0;
-			int j = 0;
-			while (i < path.length) {
-				if (j >= r.pattern.length) {
-					if (r.pattern[r.pattern.length-1] == '/') {
-						handler = r.handler;
-					}
-					break;
-				} else if (r.pattern[j] == ':') {
-					String name = _find(r.pattern, '/', j+1);
-					String value  = _find(path, '/', i);
-					//print("name = ${name} value = ${value}");
-					values[name] = value;
-					j += name.length + 1;
-					i += value.length;
-				} else if (r.pattern[j] == path[i]) {
-					i++;
-					j++;
-				} else {
-					break;
-				}
-			}
 
-			//print("j = ${j} pattern length = ${r.pattern.length}");
-			if (j == r.pattern.length) {
-				handler = r.handler;
-			}
+			Matcher m = new Matcher(r.pattern, path);
 
-			if (handler != null) {
-				handler.handle(path.substring(1, path.length), values);
+			if (m.matches()) {
+				r.handler.handle(path.substring(1, path.length), m.values);
 				return;
 			}
 		}
-	}
-
-	String _find(String s, String c, int i) {
-		int j = i;
-		while (j < s.length && s[j] != c) {
-			j++;
-		}
-		return s.substring(i, j);
 	}
 
 	void addHandler(String pattern, HashRouterHandler handler) {
