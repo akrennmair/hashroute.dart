@@ -31,7 +31,7 @@ class HashRouter {
 
 	HashRouter() {
 		routes = [];
-		window.on.hashChange.add( (e) {
+		window.onHashChange.listen( (e) {
 			_handleNewRoute();
 		});
 	}
